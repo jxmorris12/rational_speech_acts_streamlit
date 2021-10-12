@@ -38,7 +38,7 @@ def main() -> None:
         with col1:
             prior_r1 = st.slider('p(r1)', min_value=0.0, max_value=1.0, value=0.5, step=0.01)
         with col2:
-            prior_r2 = st.slider('p(r2)', min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+            prior_r2 = st.markdown(f'p(r2) = 1 - p(r1) = **{1-prior_r1:.2f}**')
         st.subheader('Cost')
         st.markdown('Each message may incur a cost, i.e. it may be much more expensive to say "hat" than "glasses".')
         col1, col2 = st.columns(2)
@@ -63,7 +63,7 @@ def main() -> None:
         #
         basic_mod = RSA(
             lexicon=get_core_lexicon(),
-            prior=[prior_r1, prior_r2],
+            prior=[prior_r1, 1-prior_r1],
             costs=[cost_r1, cost_r2],
             alpha=alpha,
         )
