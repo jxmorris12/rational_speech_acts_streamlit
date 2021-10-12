@@ -24,21 +24,7 @@ def display_reference_game(mod: pd.DataFrame) -> None:
     d['costs'] = mod.costs
     d.loc['prior'] = list(mod.prior) + [""]
     d.loc['alpha'] = [mod.alpha] + [" "] * mod.lexicon.shape[1]
-    # display(d)
-    print('d:', d)
     st.table(d.astype(str))
-
-# @st.cache
-# def test_load_data():
-#     # Create a text element and let the reader know the data is loading.
-#     data_load_state = st.text('Loading data...')
-#     # Load 10,000 rows of data into the dataframe.
-#     data = load_data(10000)
-#     # Notify the reader that the data was successfully loaded.
-#     data_load_state.text('Loading data...done!')
-#     # write subheader and data printout
-#     st.subheader('Raw data')
-#     st.write(data)
 
 def main() -> None:
     #
